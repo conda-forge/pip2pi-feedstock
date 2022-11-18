@@ -1,5 +1,5 @@
 {% set name = "pip2pi" %}
-{% set version = "0.8.0" %}
+{% set version = "0.8.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/wolever/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 3b790c2eb4f77b02605245d0c7c7adc9b0de12a8fd4c085bd8084fbd97bab350
+  sha256: 5fe6ad966805a28e1b5f886bcf453cab5fd209ac5a13479f7a456e5d42e12b24
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - dir2pi = libpip2pi.commands:dir2pi
     - pip2pi = libpip2pi.commands:pip2pi
@@ -39,7 +39,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
-  summary: 'pip2pi builds a PyPI-compatible package repository from pip requirements'
+  summary: pip2pi builds a PyPI-compatible package repository from pip requirements
 
 extra:
   recipe-maintainers:
