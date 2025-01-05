@@ -11,7 +11,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
   entry_points:
     - dir2pi = libpip2pi.commands:dir2pi
@@ -20,15 +20,17 @@ build:
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python
+    - python >={{ python_min }}
     - pip
     - setuptools
 
 test:
+  requires:
+    - python {{ python_min }}
   commands:
     - pip2pi --help
     - dir2pi --help
